@@ -4,10 +4,9 @@ import PokemonCard from "./components/PokemonCard";
 
 function App() {
 	return (
-		<section>
-			<MyTitle />
+		<div>
 			<PokemonCard />
-		</section>
+		</div>
 	);
 }
 
