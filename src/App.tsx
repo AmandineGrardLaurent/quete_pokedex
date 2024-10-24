@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-// import MyTitle from "./components/MyTitle";
 import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
 
-const pokemonList = [
+type pokemonProps = {
+	name: string;
+	imgSrc?: string;
+};
+
+const pokemonList: pokemonProps[] = [
 	{
 		name: "bulbasaur",
 		imgSrc:
@@ -31,29 +36,15 @@ const pokemonList = [
 
 function App() {
 	const [pokemonIndex, setPokemonIndex] = useState(0);
-	const handleClickAfter = () => {
-		if (pokemonIndex < pokemonList.length - 1) {
-			setPokemonIndex(pokemonIndex + 1);
-		} else {
-			setPokemonIndex(pokemonIndex - pokemonIndex);
-		}
-	};
-	const handleClickBefore = () => {
-		if (pokemonIndex === 0) {
-			setPokemonIndex(pokemonIndex + (pokemonList.length - 1));
-		} else {
-			setPokemonIndex(pokemonIndex - 1);
-		}
-	};
+
 	return (
 		<div>
+			<NavBar
+				pokemonIndex={pokemonIndex}
+				setPokemonIndex={setPokemonIndex}
+				pokemonList={pokemonList}
+			/>
 			<PokemonCard pokemon={pokemonList[pokemonIndex]} />
-			<button type="button" onClick={handleClickBefore}>
-				Pokemon précédent
-			</button>
-			<button type="button" onClick={handleClickAfter}>
-				Pokemon suivant
-			</button>
 		</div>
 	);
 }
