@@ -1,14 +1,9 @@
 import { useState } from "react";
 import "./App.css";
+// import MyTitle from "./components/MyTitle";
 import PokemonCard from "./components/PokemonCard";
-import NavBar from "./components/NavBar";
 
-type pokemonProps = {
-	name: string;
-	imgSrc?: string;
-};
-
-const pokemonList: pokemonProps[] = [
+const pokemonList = [
 	{
 		name: "bulbasaur",
 		imgSrc:
@@ -39,11 +34,17 @@ function App() {
 
 	return (
 		<div>
-			<NavBar
-				pokemonIndex={pokemonIndex}
-				setPokemonIndex={setPokemonIndex}
-				pokemonList={pokemonList}
-			/>
+			<nav>
+				{pokemonList.map((p, index) => (
+					<button
+						type="button"
+						key={p.name}
+						onClick={() => setPokemonIndex(index)}
+					>
+						{p.name}
+					</button>
+				))}
+			</nav>
 			<PokemonCard pokemon={pokemonList[pokemonIndex]} />
 		</div>
 	);
