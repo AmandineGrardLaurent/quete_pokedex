@@ -10,8 +10,18 @@ type NavBarProps = {
 };
 
 function NavBar({ pokemonIndex, setPokemonIndex, pokemonList }: NavBarProps) {
-	const handleClickBefore = () => setPokemonIndex(pokemonIndex - 1);
-	const handleClickAfter = () => setPokemonIndex(pokemonIndex + 1);
+	const handleClickBefore = () => {
+		setPokemonIndex(pokemonIndex - 1);
+		if (pokemonList[pokemonIndex].name === "pikachu") {
+			alert("pika pikachu");
+		}
+	};
+	const handleClickAfter = () => {
+		setPokemonIndex(pokemonIndex + 1);
+		if (pokemonList[pokemonIndex].name === "pikachu") {
+			alert("pika pikachu");
+		}
+	};
 	return (
 		<nav>
 			{pokemonIndex > 0 && (
